@@ -332,7 +332,8 @@ func (apiv1 *APIv1) release_one(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	err = smtp.SendMail(cfg.Host+":"+cfg.Port, auth, "nobody@"+apiv1.config.Hostname, []string{cfg.Email}, bytes)
+	log.Printf("Releasing message using sender: %s", apiv1.config.Hostname)
+	err = smtp.SendMail(cfg.Host+":"+cfg.Port, auth, "support@"+apiv1.config.Hostname, []string{cfg.Email}, bytes)
 	if err != nil {
 		log.Printf("Failed to release message: %s", err)
 		w.WriteHeader(500)
