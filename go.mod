@@ -1,4 +1,4 @@
-module github.com/mailhog/MailHog
+module github.com/nicostubi/mailhog2
 
 go 1.6
 
